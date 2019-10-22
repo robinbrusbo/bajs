@@ -91,6 +91,23 @@ class Projectile
             }
             std::cout << velocity << std::endl;
         }
+
+        void reset(){
+            shouldClear = true;
+            fire = false;
+            timesFired = 0;
+            tick = 0;
+            initialize();
+        }
+
+        void offScreen(){
+            if (circle.getPosition().x > 720 || circle.getPosition().x < 0){
+                reset();
+            }
+            if (circle.getPosition().y > 480 || circle.getPosition().y < 0){
+                reset();
+            }
+        }
         
     private:
 };
@@ -138,5 +155,6 @@ int main(){
         window.draw(projectile.drawCircle());
         window.draw(arrow.drawArrow());
         window.display();
+        projectile.offScreen();
     }
 }
