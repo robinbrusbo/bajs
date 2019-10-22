@@ -3,11 +3,8 @@
 #include <bits/stdc++.h>
 
 // To do:
-// Lägg in collisions
 // Lägg in text på skärmen (v, alfa)
 // Strukturera fint!
-
-#define pi 3.1415926
 
 class Target
 {
@@ -89,11 +86,11 @@ class Projectile
         float tick = 0;
 
         float newX(float t){
-            return cos(90-(arrow.angle*pi/180))*velocity*t;
+            return cos(90-(arrow.angle*3.14/180))*velocity*t;
         }
 
         float newY(float t){
-            return sin(90-(arrow.angle*pi/180))*velocity*t-4.91*pow(t, 2);
+            return sin(90-(arrow.angle*3.14/180))*velocity*t-4.91*pow(t, 2);
         }
 
         void initialize(){
@@ -121,7 +118,7 @@ class Projectile
 
         void changeSpeed(int c){
             if (c == 1){
-                if (velocity < 3){
+                if (velocity < 10){
                     velocity += 0.005;
                 }
             } else if (c == 0){
