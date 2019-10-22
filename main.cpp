@@ -2,11 +2,19 @@
 #include <iostream>
 #include <bits/stdc++.h>
 
+// To do:
+// Lägg in collisions
+// Lägg in text på skärmen (v, alfa)
+// Strukturera fint!
+
 #define pi 3.1415926
 
 class Target
 {
     public:
+
+        float x = 400;
+        float y = 400;
 
         sf::RectangleShape drawTarget(){
             sf::RectangleShape board(sf::Vector2f(5, 50));
@@ -32,10 +40,6 @@ class Target
         }
 
     private:
-
-        float x = 400;
-        float y = 400;
-
 };
 
 Target target;
@@ -144,6 +148,15 @@ class Projectile
                 reset();
             }
         }
+
+        void checkCollision(){
+            if (abs(circle.getPosition().x - target.x) <= 5){
+                if (abs(circle.getPosition().y - target.y) <= 25){
+                    std::cout << "You win" << std::endl;
+                    reset();
+                }
+            }
+        }
         
     private:
 };
@@ -207,5 +220,6 @@ int main(){
         window.draw(target.drawTarget());
         window.display();
         projectile.offScreen();
+        projectile.checkCollision();
     }
 }
