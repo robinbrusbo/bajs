@@ -4,6 +4,42 @@
 
 #define pi 3.1415926
 
+class Target
+{
+    public:
+
+        sf::RectangleShape drawTarget(){
+            sf::RectangleShape board(sf::Vector2f(5, 50));
+            board.setOrigin(2.5, 25);
+            board.setPosition(x, y);
+            board.setFillColor(sf::Color::Red);
+            return board;
+        }
+
+        void maneuver(char direction){
+            if (direction == 'l'){
+                x -= 0.1;
+            }
+            if (direction == 'r'){
+                x += 0.1;
+            }
+            if (direction == 'u'){
+                y += 0.1;
+            }
+            if (direction == 'd'){
+                y -= 0.1;
+            }
+        }
+
+    private:
+
+        float x = 400;
+        float y = 400;
+
+};
+
+Target target;
+
 class Arrow
 {
     public:
@@ -148,6 +184,18 @@ int main(){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
             projectile.changeSpeed(1);
         }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+            target.maneuver('d');
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
+            target.maneuver('l');
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+            target.maneuver('u');
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+            target.maneuver('r');
+        }
 
         if (projectile.shouldClear == true){
             window.clear();
@@ -156,6 +204,7 @@ int main(){
             window.draw(projectile.drawCircle());
         }
         window.draw(arrow.drawArrow());
+        window.draw(target.drawTarget());
         window.display();
         projectile.offScreen();
     }
