@@ -29,7 +29,7 @@ class Arrow
                     angle -= 0.1;
                 }
             }
-            std::cout << angle << std::endl;
+            std::cout << "Angle: " << 90-angle << std::endl;
         }
     
     private:
@@ -49,18 +49,18 @@ class Projectile
         float tick = 0;
 
         float newX(float t){
-            return cos(90-(arrow.angle*pi/180))*velocity;
+            return cos(90-(arrow.angle*pi/180))*velocity*t;
         }
 
         float newY(float t){
-            return sin(90-(arrow.angle*pi/180))*t-4.91*pow(t, 2);
+            return sin(90-(arrow.angle*pi/180))*velocity*t-4.91*pow(t, 2);
         }
 
         void initialize(){
             circle.setRadius(8);
             circle.setFillColor(sf::Color::Blue);
             circle.setOrigin(4, 4);
-            circle.setPosition(100, 400);
+            circle.setPosition(90, 390);
         }
 
         sf::CircleShape drawCircle(){
@@ -81,15 +81,15 @@ class Projectile
 
         void changeSpeed(int c){
             if (c == 1){
-                if (velocity < 10){
-                    velocity += 0.025;
+                if (velocity < 3){
+                    velocity += 0.005;
                 }
             } else if (c == 0){
                 if (velocity > 0.025){
-                    velocity -= 0.025;
+                    velocity -= 0.005;
                 }
             }
-            std::cout << velocity << std::endl;
+            std::cout << "Velocity: " << velocity << std::endl;
         }
 
         void reset(){
@@ -152,7 +152,9 @@ int main(){
         if (projectile.shouldClear == true){
             window.clear();
         }
-        window.draw(projectile.drawCircle());
+        if (projectile.fire == true){
+            window.draw(projectile.drawCircle());
+        }
         window.draw(arrow.drawArrow());
         window.display();
         projectile.offScreen();
