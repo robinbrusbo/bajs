@@ -21,5 +21,5 @@ float Arrow::newAngle(int b){
         }
     }    
     printf("Angles: ");
-    printf("%f", 90 - angle);
+    printf("%f\n", 90 - angle);
 }

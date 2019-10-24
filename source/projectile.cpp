@@ -66,7 +66,7 @@ void Projectile::offScreen(){
 void Projectile::checkCollision(Target target){
     if (abs(circle.getPosition().x - target.x) <= 5){
         if (abs(circle.getPosition().y - target.y) <= 25){
-            printf("You win");
+            printf("You win\n");
             reset();
         }
     }
