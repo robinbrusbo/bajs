@@ -21,7 +21,6 @@ add_executable(Program ${SOURCES})
 # End of executables
 
 # Include SFML
-find_package(SFML 2.5.1 COMPONENTS system window graphics network audio REQUIRED)
 target_link_libraries(Program sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
 # End of SFML
 
