@@ -1,3 +1,5 @@
-g++ -c main.cpp
-g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
-./sfml-app
+#!/bin/bash
+cmake --build "build" --config Release --target all -- -j 10
+./Program
+
+rm Program
