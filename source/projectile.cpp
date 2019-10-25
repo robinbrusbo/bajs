@@ -28,17 +28,16 @@ sf::CircleShape Projectile::drawCircle(Arrow arrow){
 }
 
 void Projectile::fireProjectile(){
-    shouldClear = false;
     fire = true;
 }
 
 void Projectile::changeSpeed(int c){
     if (c == 1){
-        if (velocity < 10){
+        if (velocity < maxvel){
             velocity += 0.005;
         }
     } else if (c == 0){
-        if (velocity > 0.025){
+        if (velocity > minvel){
             velocity -= 0.005;
         }
     }
@@ -47,7 +46,6 @@ void Projectile::changeSpeed(int c){
 }
 
 void Projectile::reset(){
-    shouldClear = true;
     fire = false;
     timesFired = 0;
     tick = 0;

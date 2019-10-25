@@ -6,20 +6,20 @@ sf::RectangleShape Arrow::drawArrow(){
     rectangle.setOrigin(15, 80);
     rectangle.setPosition(100, 400);
     rectangle.setFillColor(sf::Color::White);
-    rectangle.setRotation(angle);
+    rectangle.setRotation(angle - offset);
     return rectangle;
 }
 
 float Arrow::newAngle(int b){
     if (b == 1){
-        if (angle < 90){
+        if (angle - offset < 90){
             angle += 0.1;
         }
     } else {
-        if (angle > 0){
+        if (angle - offset > 0){
             angle -= 0.1;
         }
     }    
-    printf("Angles: ");
-    printf("%f\n", 90 - angle);
+    printf("Angle: ");
+    printf("%f\n", 90 - angle + offset);
 }

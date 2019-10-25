@@ -10,12 +10,13 @@ class Projectile
 {
     public:
 
-        bool shouldClear = true;
         bool fire = false;
         int timesFired = 0;
-        float velocity = 1;
+        float velocity = 3;
         sf::CircleShape circle;
         float tick = 0;
+        float maxvel = 10;
+        float minvel = 0.025;
 
         float newX(float t, Arrow arrow);
 

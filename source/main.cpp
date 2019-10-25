@@ -56,12 +56,13 @@ int main(){
             target.maneuver('r');
         }
 
-        if (projectile.shouldClear == true){
+        if (projectile.fire == false){
             window.clear();
         }
         if (projectile.fire == true){
             window.draw(projectile.drawCircle(arrow));
         }
+        
         window.draw(arrow.drawArrow());
         window.draw(target.drawTarget());
         window.display();

@@ -8,6 +8,8 @@ class Arrow
     public:
         float angle = 0;
 
+        float offset = 25;
+
         sf::RectangleShape drawArrow();
 
         float newAngle(int b);
